@@ -159,3 +159,160 @@ console.log(numbers, strings);
 ✅ **Type Safety** – Avoids `any`, ensuring correct type usage.  
 ✅ **Constraints** – Can restrict generic types.  
 ✅ **Default Types** – Allows setting a default type.
+
+---
+
+In **TypeScript**, the key differences between **class, interface, abstract, generics, and type** are as follows:
+
+---
+
+## **1. Class** (Blueprint for Objects)
+
+- A **class** is a blueprint for creating objects.
+- It can have **properties, methods, constructors, and access modifiers** (`public`, `private`, `protected`).
+- Supports **inheritance** (`extends`).
+
+### **Example:**
+
+```typescript
+class Car {
+  constructor(public brand: string, private speed: number) {}
+
+  accelerate(): void {
+    console.log(`${this.brand} is accelerating.`);
+  }
+}
+
+const myCar = new Car('Tesla', 200);
+myCar.accelerate(); // Output: Tesla is accelerating.
+```
+
+✅ **Use classes when you need object-oriented programming (OOP) features like methods and inheritance.**
+
+---
+
+## **2. Interface** (Defines a Structure, No Implementation)
+
+- **Interfaces only define the shape** (structure) of an object.
+- They do **not provide implementations** (unlike classes).
+- Supports **inheritance** (`extends`) and can be implemented by classes.
+
+### **Example:**
+
+```typescript
+interface Person {
+  name: string;
+  age: number;
+}
+
+const user: Person = { name: 'John', age: 30 }; // ✅ Valid
+```
+
+✅ **Use interfaces to define the structure of an object without implementation.**
+
+---
+
+## **3. Abstract Class** (Partially Implemented Class)
+
+- Cannot be instantiated directly.
+- Can have **both implemented and abstract methods**.
+- Must be **extended** by child classes.
+
+### **Example:**
+
+```typescript
+abstract class Animal {
+  constructor(public name: string) {}
+
+  abstract makeSound(): void; // Must be implemented by subclasses
+
+  move(): void {
+    console.log(`${this.name} is moving.`);
+  }
+}
+
+class Dog extends Animal {
+  makeSound(): void {
+    console.log('Woof! Woof!');
+  }
+}
+
+const dog = new Dog('Buddy');
+dog.makeSound(); // Output: Woof! Woof!
+dog.move(); // Output: Buddy is moving.
+```
+
+✅ **Use abstract classes when you want to enforce certain methods but allow partial implementation.**
+
+---
+
+## **4. Generics** (Reusable & Flexible Types)
+
+- Allows creating reusable **functions, classes, and interfaces** that work with different types.
+- Uses `<T>` notation to represent a **placeholder type**.
+
+### **Example:**
+
+```typescript
+function identity<T>(value: T): T {
+  return value;
+}
+
+console.log(identity<number>(5)); // Output: 5
+console.log(identity<string>('Hello')); // Output: Hello
+```
+
+✅ **Use generics when you want functions or classes to work with multiple types dynamically.**
+
+---
+
+## **5. Type** (Alias for Custom Types)
+
+- Similar to an interface, but more flexible.
+- Can be used to define **primitive types, unions, and tuples**.
+
+### **Example 1: Basic Type Alias**
+
+```typescript
+type ID = string | number;
+
+const userId: ID = 101; // ✅ Works
+const anotherId: ID = 'ABC123'; // ✅ Works
+```
+
+### **Example 2: Object Type**
+
+```typescript
+type Car = {
+  brand: string;
+  speed: number;
+};
+
+const myCar: Car = { brand: 'Ford', speed: 120 }; // ✅ Works
+```
+
+✅ **Use `type` when defining unions, primitives, or tuple types. Use `interface` for objects when extending is needed.**
+
+---
+
+## **Key Differences Summary**
+
+| Feature                      | **Class**                   | **Interface**                  | **Abstract**                     | **Generics**                 | **Type**     |
+| ---------------------------- | --------------------------- | ------------------------------ | -------------------------------- | ---------------------------- | ------------ |
+| **Can have implementation?** | ✅ Yes                      | ❌ No                          | ✅ Partial                       | ❌ No                        | ❌ No        |
+| **Can be instantiated?**     | ✅ Yes                      | ❌ No                          | ❌ No                            | ✅ Yes                       | ✅ Yes       |
+| **Supports inheritance?**    | ✅ Yes (`extends`)          | ✅ Yes (`extends`)             | ✅ Yes (`extends`)               | ✅ Yes (`extends`)           | ❌ No        |
+| **Supports methods?**        | ✅ Yes                      | ❌ No (only method signatures) | ✅ Yes (partial)                 | ✅ Yes                       | ❌ No        |
+| **Usage?**                   | Object-oriented programming | Object structure               | Partially implemented base class | Reusable functions & classes | Custom types |
+
+---
+
+### **When to Use What?**
+
+- **Class:** When you need object-oriented programming (OOP) features like methods, properties, and inheritance.
+- **Interface:** When you only need to define the shape of an object.
+- **Abstract Class:** When you need a class that enforces certain methods but allows some implementation.
+- **Generics:** When you want to write reusable code that works with different types.
+- **Type:** When you need flexible type definitions (especially for unions and primitives).
+
+Would you like **real-world examples** of each for better understanding? 🚀
