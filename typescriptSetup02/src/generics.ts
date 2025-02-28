@@ -19,13 +19,19 @@ const identityThree = <Type>(val: Type): Type => {
   return val;
 };
 
-console.log(identityThree(100));
-console.log(identityThree(`hello aliens`));
-console.log(identityThree(true));
+// console.log(identityThree(100));
+// console.log(identityThree(`hello aliens`));
+// console.log(identityThree(true));
 
 interface Bottle {
   brand: string;
   type: number;
 }
 
-console.log(identityThree<Bottle>({ brand: 'Dhakad', type: 99 }));
+// console.log(identityThree<Bottle>({ brand: 'Dhakad', type: 99 }));
+
+//! generic array
+const getFirstElement = <T>(products: T[]): T => {
+  return products[0];
+};
+// console.log(getFirstElement([10, 20, 30, 40]));

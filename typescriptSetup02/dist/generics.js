@@ -14,7 +14,9 @@ const identityTwo = (val) => {
 const identityThree = (val) => {
     return val;
 };
-console.log(identityThree(100));
-console.log(identityThree(`hello aliens`));
-console.log(identityThree(true));
-console.log(identityThree({ brand: 'Dhakad', type: 99 }));
+// console.log(identityThree<Bottle>({ brand: 'Dhakad', type: 99 }));
+//! generic array
+const getFirstElement = (products) => {
+    return products[0];
+};
+// console.log(getFirstElement([10, 20, 30, 40]));
