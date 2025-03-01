@@ -1,5 +1,17 @@
 # **Type Narrowing in TypeScript**
 
+1. typeof type guards
+2. truthiness narrowing
+3. equality narrowing
+4. in operator narrowing
+5. instanceof narrowing
+6. assignments
+7. control flow analysis
+8. using type predicated
+9. discriminated unions
+10. the never type
+11. exhaustiveness checking
+
 **Type narrowing** in TypeScript is the process of refining the type of a variable **within a specific scope** based on runtime checks. This helps TypeScript understand the actual type and provide better type safety.
 
 ---

@@ -32,6 +32,30 @@ function printAll(str) {
         }
     }
 }
-printAll(`hare krishna hare rama`);
-printAll(null);
-printAll(['a', 'b', 'c']);
+function checkIsAdminAccount(account) {
+    if ('isAdmin' in account) {
+        return account.isAdmin;
+    }
+    return `not a valid property`;
+}
+// console.log(checkIsAdminAccount({ name: 'rama', email: 'rama@gmail.com' }));
+// console.log(
+//   checkIsAdminAccount({ name: 'rama', email: 'rama@gmail.com', isAdmin: true })
+// );
+//# instanceof narrowing
+function logValue(x) {
+    if (x instanceof Date) {
+        console.log(x.toUTCString());
+    }
+    else {
+        console.log(x.toUpperCase());
+    }
+}
+function checkIsFish(x) {
+    return x.swim !== undefined;
+}
+// Example usage:
+const myFish = { swim: () => console.log('Swimming') };
+const myBird = { fly: () => console.log('Flying') };
+console.log(checkIsFish(myFish)); // true
+console.log(checkIsFish(myBird)); // false

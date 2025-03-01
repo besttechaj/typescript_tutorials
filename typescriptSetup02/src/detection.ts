@@ -35,6 +35,56 @@ function printAll(str: string | string[] | null) {
   }
 }
 
-printAll(`hare krishna hare rama`);
-printAll(null);
-printAll(['a', 'b', 'c']);
+// printAll(`hare krishna hare rama`);
+// printAll(null);
+// printAll(['a', 'b', 'c']);
+
+//# in operator narrowing
+
+interface User {
+  name: string;
+  email: string;
+}
+
+interface Admin {
+  name: string;
+  email: string;
+  isAdmin: boolean;
+}
+
+function checkIsAdminAccount(account: User | Admin) {
+  if ('isAdmin' in account) {
+    return account.isAdmin;
+  }
+  return `not a valid property`;
+}
+
+// console.log(checkIsAdminAccount({ name: 'rama', email: 'rama@gmail.com' }));
+// console.log(
+//   checkIsAdminAccount({ name: 'rama', email: 'rama@gmail.com', isAdmin: true })
+// );
+
+//# instanceof narrowing
+function logValue(x: Date | string) {
+  if (x instanceof Date) {
+    console.log(x.toUTCString());
+  } else {
+    console.log(x.toUpperCase());
+  }
+}
+
+//# type predicates
+
+type Fish = { swim: () => void };
+type Bird = { fly: () => void };
+
+function checkIsFish(x: Fish | Bird): x is Fish {
+  return (x as Fish).swim !== undefined;
+}
+
+// Example usage:
+const myFish: Fish = { swim: () => console.log('Swimming') };
+const myBird: Bird = { fly: () => console.log('Flying') };
+
+console.log(checkIsFish(myFish)); // true
+console.log(checkIsFish(myBird)); // false
